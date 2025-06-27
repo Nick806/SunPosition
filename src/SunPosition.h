@@ -68,7 +68,7 @@ struct SunPosition {
         float hrAngl = fmod(hours * 1440 + eqTime + 4 * lon, 1440) / 4;                                     // True Solar Time (min)
         hrAngl = hrAngl + (hrAngl < 0 ? 180 : -180);                                                        // Hour Angle
         zen = acos(sin(lat) * sin(decl) + cos(lat) * cos(decl) * cos(radians(hrAngl)));                     // Zenith
-        azm = degrees(acos(max(min(((sin(lat) * cos(zen)) - sin(decl)) / (cos(lat) * sin(zen)),-1),1)));    // Azimuth
+        azm = degrees(acos(min(max(((sin(lat) * cos(zen)) - sin(decl)) / (cos(lat) * sin(zen)),-1),1)));    // Azimuth
         decl = degrees(decl);
         alt = 90 - degrees(zen);
         azm = (hrAngl > 0) ? (azm + 180) : (540 - azm);
